@@ -17,7 +17,7 @@ armId = p.loadURDF("kuka_iiwa/model.urdf", armStartPos, armStartOrientation)
 numJoints = p.getNumJoints(armId)
 endEffectorIndex = 6
 
-# 加载多个立方体（3个示例）
+# 加载多个立方体
 object_positions = [[0.5, 0.5, 0.5], [0.7, 0.5, 0.5], [0.5, 0.7, 0.5]]
 object_ids = []
 for pos in object_positions:
@@ -38,7 +38,7 @@ projectionMatrix = p.computeProjectionMatrixFOV(fov, aspect, near, far)
 viewMatrix = p.computeViewMatrix(
     cameraEyePosition=[1, 1, 2],  # 相机位置
     cameraTargetPosition=[0.5, 0.5, 0],  # 观察点
-    cameraUpVector=[0, 0, 1]  # 上向量
+    cameraUpVector=[0, 0, 1]  # 上向量：相机视角下“上”在哪里
 )
 
 # 获取相机图像，检测物体位置
