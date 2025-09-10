@@ -109,7 +109,7 @@ class UR5Simulation:
                 print(f"成功加载: {urdf_file}")
                 break
             except Exception as e:
-                print(f"加载失败 {urdf_file}: {e}")
+                print(f"加载失败 {urdf_file}: {str(e)}")
                 continue
         
         if self.robotId is None:
@@ -224,12 +224,14 @@ class UR5Simulation:
                 
         except KeyboardInterrupt:
             print("程序中断")
+        except Exception as e:
+            print(f"仿真错误: {str(e)}")
     
-def cleanup(self):
-    """清理资源"""
-    if p.isConnected():
-        p.disconnect()
-    print("仿真结束")
+    def cleanup(self):
+        """清理资源"""
+        if p.isConnected():
+            p.disconnect()
+        print("仿真结束")
 
 def main():
     """主函数"""
@@ -237,7 +239,7 @@ def main():
     try:
         simulation.run_simulation()
     except Exception as e:
-        print(f"错误: {e}")
+        print(f"错误: {str(e)}")
     finally:
         simulation.cleanup()
 
