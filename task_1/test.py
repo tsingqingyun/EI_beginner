@@ -27,6 +27,7 @@ class GraspPlan:
 
 class PandaGrasper:
     def __init__(self, mode: str = "ik", gains: PDGains = PDGains(), record_path: Optional[str] = None):
+        # 验证 mode 参数是否为 'ik' 或 'pd'，并设置默认值
         assert mode in ("ik", "pd")
         self.mode = mode
         self.gains = gains
